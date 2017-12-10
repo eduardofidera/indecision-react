@@ -81,6 +81,11 @@ var Action = function (_React$Component3) {
   }
 
   _createClass(Action, [{
+    key: 'handlePick',
+    value: function handlePick() {
+      alert('handle pick');
+    }
+  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
@@ -88,7 +93,7 @@ var Action = function (_React$Component3) {
         null,
         React.createElement(
           'button',
-          null,
+          { onClick: this.handlePick },
           'What should I do'
         )
       );
@@ -108,6 +113,11 @@ var Options = function (_React$Component4) {
   }
 
   _createClass(Options, [{
+    key: 'handlePick',
+    value: function handlePick() {
+      alert('handle remove');
+    }
+  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
@@ -117,6 +127,11 @@ var Options = function (_React$Component4) {
           'p',
           null,
           this.props.options.length
+        ),
+        React.createElement(
+          'button',
+          { onClick: this.handlePick },
+          'remove all'
         ),
         this.props.options.map(function (option) {
           return React.createElement(Option, { key: option, optionText: option });
@@ -138,11 +153,31 @@ var AddOptions = function (_React$Component5) {
   }
 
   _createClass(AddOptions, [{
+    key: 'handleAppOption',
+    value: function handleAppOption(e) {
+      e.preventDefault();
+
+      var option = e.target.elements.option.value.trim();
+      if (option) {
+        alert(option);
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
         'div',
         null,
+        React.createElement(
+          'form',
+          { onSubmit: this.handleAppOption },
+          React.createElement('input', { type: 'text', name: 'option' }),
+          React.createElement(
+            'button',
+            { type: 'submit' },
+            'Add option'
+          )
+        ),
         React.createElement(
           'p',
           null,
