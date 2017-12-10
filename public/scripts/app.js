@@ -19,23 +19,38 @@ var Counter = function (_React$Component) {
     _this.addOne = _this.addOne.bind(_this);
     _this.removeOne = _this.removeOne.bind(_this);
     _this.resetAll = _this.resetAll.bind(_this);
+    _this.state = {
+      count: 0
+    };
     return _this;
   }
 
   _createClass(Counter, [{
     key: 'addOne',
     value: function addOne() {
-      console.log('addOne');
+      this.setState(function (prevState) {
+        return {
+          count: prevState.count + 1
+        };
+      });
     }
   }, {
     key: 'removeOne',
     value: function removeOne() {
-      console.log('removeone');
+      this.setState(function (prevState) {
+        return {
+          count: prevState.count - 1
+        };
+      });
     }
   }, {
     key: 'resetAll',
     value: function resetAll() {
-      console.log('reset');
+      this.setState(function () {
+        return {
+          count: 0
+        };
+      });
     }
   }, {
     key: 'render',
@@ -43,10 +58,12 @@ var Counter = function (_React$Component) {
       return React.createElement(
         'div',
         null,
+        this.state.name,
         React.createElement(
           'h1',
           null,
-          'Count: '
+          'Count: ',
+          this.state.count
         ),
         React.createElement(
           'button',
