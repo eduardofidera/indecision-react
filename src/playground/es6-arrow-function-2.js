@@ -9,7 +9,7 @@ console.log(add(55, 1, 1001));
 // this keyword - no longer bound
 
 const user = {
-  name: 'Andrew',
+  name: 'Eduardo',
   cities: ['Philadelphia', 'New York', 'Dublin'],
   printPlacesLived() {
     return this.cities.map((city) => this.name + ' has lived in ' + city);
